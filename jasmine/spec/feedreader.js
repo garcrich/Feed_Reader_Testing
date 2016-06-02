@@ -26,17 +26,31 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
+         it("should have URL defined and be not empty", function() {
+            for (var i = 0; i < allFeeds.length; i++) {
+                
+                //Makes sure url property has been defined
+                expect(allFeeds[i].url).toBeDefined();
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+                //Ensures url string is not empty
+                expect(allFeeds[i].url).not.toEqual("");
+            };
+         });
 
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
-         */
+         */ it("should have a name defined and not be empty", function(){
+            for (var i = 0; i < allFeeds.length; i++) {
+                
+                //Makes sure url property has been defined
+                expect(allFeeds[i].name).toBeDefined();
+
+                //Ensures url string is not empty
+                expect(allFeeds[i].name).not.toEqual("");
+            };  
+         })
     });
 
 

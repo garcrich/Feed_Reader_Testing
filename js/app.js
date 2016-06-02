@@ -23,6 +23,13 @@ var allFeeds = [
     }
 ];
 
+for (var i = 0; i < allFeeds.length; i++) {
+    console.log(allFeeds[i].url)
+}
+
+for (var i = 0; i < allFeeds.length; i++) {
+    console.log(allFeeds[i].name)
+}
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
  * function when the API is loaded.
@@ -56,8 +63,13 @@ function init() {
                      entries = result.feed.entries,
                      entriesLen = entries.length,
                      entryTemplate = Handlebars.compile($('.tpl-entry').html());
-
-                 title.html(feedName);   // Set the header text
+                     /*console.log(container);
+                     console.log(title);
+                     console.log(entries);
+                     console.log(entriesLen);
+                     console.log(feedUrl);*/
+                 title.html(feedName);
+                 console.log(title.html(feedName));   // Set the header text
                  container.empty();      // Empty out all previous entries
 
                  /* Loop through the entries we just loaded via the Google
@@ -87,6 +99,7 @@ function init() {
  * to call when the Feed Reader API is done loading.
  */
 google.load('feeds', '1');
+console.log(google.load('feeds', '1'));
 google.setOnLoadCallback(init);
 
 /* All of this functionality is heavily reliant upon the DOM, so we
