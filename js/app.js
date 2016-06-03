@@ -106,6 +106,7 @@ $(function() {
         feedItemTemplate = Handlebars.compile($('.tpl-feed-list-item').html()),
         feedId = 0,
         menuIcon = $('.menu-icon-link');
+        //console.log(menuIcon);
 
     /* Loop through all of our feeds, assigning an id property to
      * each of the feeds based upon its index within the array.
