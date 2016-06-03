@@ -65,7 +65,7 @@ $(function() {
                 expect(bodyHiddenClass).toContain("menu-hidden");
                 });
                 
-                it("should check the to if the class 'menu-hidden' on body is toggled when menu icon is clicked", function() {
+        it("should check the to if the class 'menu-hidden' on body is toggled when menu icon is clicked", function() {
             var updatedClass = document.querySelector(".menu-icon-link");
 
             //check first click behavior
@@ -76,9 +76,20 @@ $(function() {
             expect(body.className).toContain("menu-hidden");
         });
     });
+    
 
+    describe("Initial Entries", function() {
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            });
+        });
+        
+        it("check if initial entry has been loaded", function() {
+            expect((document.querySelector(".feed") === "")).toBe(false);
+        });
+    });
     /* TODO: Write a new test suite named "Initial Entries" */
-
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
