@@ -13,7 +13,7 @@ $(function() {
      * feeds definitions, the allFeeds variable in our application.
      */
     describe('RSS Feeds', function() {
-        
+
         //make sure that feeds have been filled out
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
@@ -75,7 +75,7 @@ $(function() {
         var entryLength;
         beforeEach(function(done) {
             loadFeed(0, function() {
-              entryLength = $('.feed .entry').length;
+                entryLength = $('.feed .entry').length;
                 done();
             });
         });
@@ -90,7 +90,7 @@ $(function() {
 
     describe('New Feed Selection', function() {
         var htmlInitial;
-        var htmlChange; 
+        var htmlChange;
 
         //before each comparision run the load function for the first feed 
         // and then the second
