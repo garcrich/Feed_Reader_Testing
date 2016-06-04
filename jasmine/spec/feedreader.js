@@ -89,10 +89,6 @@ $(function() {
 
 
     describe('New Feed Selection', function() {
-        //call html Display of first load
-        var HtmlChecker = function() {
-           document.querySelector(".feed").innerHTML;
-        };
         var htmlInitial;
         var htmlChange; 
 
@@ -100,11 +96,9 @@ $(function() {
         // and then the second
         beforeEach(function(done) {
             loadFeed(0, function() {
-                htmlInitial = new HtmlChecker();
-
+                htmlInitial = $('.feed')[0].innerHTML;
                 loadFeed(1, function() {
-                    htmlChange = new HtmlChecker();
-                    console.log(htmlChange)
+                    htmlChange = $('.feed')[0].innerHTML;
                     done();
                 });
             });
@@ -112,7 +106,7 @@ $(function() {
 
         //check to see the html of next load is not a copy of htmlInitial
         it('should change the content on a new load', function(done) {
-            expect(htmlInitial).not.toBe(htmlChange);
+            expect(htmlInitial).not.toEqual(htmlChange);
             done();
         });
     });
