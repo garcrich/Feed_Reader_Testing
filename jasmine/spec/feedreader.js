@@ -91,20 +91,20 @@ $(function() {
     describe('New Feed Selection', function() {
         //call html Display of first load
         var HtmlChecker = function() {
-           document.querySelector(".feed");
+           document.querySelector(".feed").innerHTML;
         };
         var htmlInitial;
         var htmlChange; 
-        console.log(htmlChange);
 
         //before each comparision run the load function for the first feed 
         // and then the second
         beforeEach(function(done) {
             loadFeed(0, function() {
-                htmlInitial = new HtmlChecker;
+                htmlInitial = new HtmlChecker();
 
                 loadFeed(1, function() {
-                    htmlChange = new HtmlChecker;
+                    htmlChange = new HtmlChecker();
+                    console.log(htmlChange)
                     done();
                 });
             });
