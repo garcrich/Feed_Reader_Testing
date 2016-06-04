@@ -122,7 +122,7 @@ $(function() {
         var item = $(this);
 
         $('body').addClass('menu-hidden');
-        (iloadFeedtem.data('id'));
+        loadFeed(item.data('id'));
         console.log(loadFeed);
         return false;
     });
