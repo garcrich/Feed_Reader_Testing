@@ -29,7 +29,7 @@ $(function() {
 
                 //Ensures url string is not empty
                 expect(allFeeds[i].url).not.toEqual("");
-            };
+            }
         });
 
 
@@ -41,8 +41,8 @@ $(function() {
 
                 //Ensures url string is not empty
                 expect(allFeeds[i].name).not.toEqual("");
-            };
-        })
+            }
+        });
     });
 
 
@@ -72,41 +72,48 @@ $(function() {
 
     describe("Initial Entries", function() {
         //load first entry and then state that it is done with done()
+        var entryLength;
         beforeEach(function(done) {
             loadFeed(0, function() {
+              entryLength = $('.feed .entry').length;
                 done();
             });
         });
 
         //verifies that the feed div is not empty
         it("check if initial entry has been loaded", function() {
-            expect((document.querySelector(".feed") === "")).toBe(false);
+            expect(entryLength).toBeGreaterThan(0);
         });
     });
 
+
+
     describe('New Feed Selection', function() {
         //call html Display of first load
-        var htmlInitial = function() {
-            document.querySelector(".feed").innerHTML;
+        var HtmlChecker = function() {
+           document.querySelector(".feed");
         };
-
-        //call html Display of next load
-        var htmlChange = function() {
-            document.querySelector(".feed").innerHTML;
-        };
+        var htmlInitial;
+        var htmlChange; 
+        console.log(htmlChange);
 
         //before each comparision run the load function for the first feed 
         // and then the second
         beforeEach(function(done) {
-            loadFeed(0, htmlInitial);
-            loadFeed(1, htmlChange);
-            done();
+            loadFeed(0, function() {
+                htmlInitial = new HtmlChecker;
+
+                loadFeed(1, function() {
+                    htmlChange = new HtmlChecker;
+                    done();
+                });
+            });
         });
 
         //check to see the html of next load is not a copy of htmlInitial
-        it('should change the content on a new load', function() {
-            expect(htmlInitial !== htmlChange).toBe(true);
+        it('should change the content on a new load', function(done) {
+            expect(htmlInitial).not.toBe(htmlChange);
+            done();
         });
-
     });
 }());
